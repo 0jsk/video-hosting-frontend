@@ -21,8 +21,10 @@
     "@chakra-ui/nuxt": "^0.3.3",
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/emotion": "^0.1.0",
+    "@vue/composition-api": "^1.4.0",
     "core-js": "^3.15.1",
-    "nuxt": "^2.15.7"
+    "nuxt": "^2.15.7",
+    "vuex": "^3.6.2"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.14.7",
@@ -33,7 +35,9 @@
     "@nuxtjs/eslint-config-typescript": "^6.0.1",
     "@nuxtjs/eslint-module": "^3.0.2",
     "@nuxtjs/stylelint-module": "^4.0.0",
+    "@types/webpack-env": "^1.16.3",
     "@vue/test-utils": "^1.2.1",
+    "axios": "^0.24.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^27.0.5",
     "eslint": "^7.29.0",
@@ -42,9 +46,11 @@
     "husky": "^6.0.0",
     "jest": "^27.0.5",
     "lint-staged": "^10.5.4",
+    "nuxt-typed-vuex": "^0.2.0",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^22.0.0",
     "ts-jest": "^27.0.3",
-    "vue-jest": "^3.0.4"
+    "vue-jest": "^3.0.4",
+    "vuex-typekit": "^2.1.7"
   }
 }

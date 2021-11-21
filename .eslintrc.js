@@ -10,6 +10,15 @@ module.exports = {
   ],
   plugins: [
   ],
-  // add your custom rules here
-  rules: {}
-}
+  rules: {
+    semi: ['error', 'always', { omitLastInOneLineBlock: true }],
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      { ignoreRestSiblings: false }
+    ],
+    '@typescript-eslint/consistent-type-imports': [
+      'error',
+      { prefer: 'type-imports' }
+    ]
+  }
+};

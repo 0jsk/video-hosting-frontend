@@ -105,7 +105,8 @@ import {
   CIconButton,
   CFlex,
   CHeading
-} from '@chakra-ui/vue'
+} from '@chakra-ui/vue';
+import { mapTypedActions } from 'vuex-typekit';
 
 export default {
   name: 'App',
@@ -140,29 +141,24 @@ export default {
           color: 'gray.900'
         }
       }
-    }
+    };
   },
   computed: {
     colorMode () {
-      return this.$chakraColorMode()
+      return this.$chakraColorMode();
     },
     theme () {
-      return this.$chakraTheme()
+      return this.$chakraTheme();
     },
     toggleColorMode () {
-      return this.$toggleColorMode
+      return this.$toggleColorMode;
     }
   },
   methods: {
+    ...mapTypedActions('auth').to('login'),
     showToast () {
-      this.$toast({
-        title: 'Account created.',
-        description: "We've created your account for you.",
-        status: 'success',
-        duration: 10000,
-        isClosable: true
-      })
+      this.login();
     }
   }
-}
+};
 </script>
