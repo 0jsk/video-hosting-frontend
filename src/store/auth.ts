@@ -1,18 +1,40 @@
-import type { AuthActions, State } from '@/services/user/auth/types';
-import type { User } from '@/services/user/types';
+import type { AuthActions, AuthMutations, State } from '@/services/user/auth/types';
 
 export const state = (): State => ({
   isAuthenticated: false,
   user: null
 });
 
-// @ts-ignore
+export const mutations: AuthMutations = {
+  SET_USER (state, user) {
+    state.user = user;
+  },
+  SET_AUTHENTICATED (state, { authenticated }) {
+    state.isAuthenticated = authenticated;
+  }
+};
+
 export const actions: AuthActions = {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  async login ({ dispatch }, credentials): Promise<User> {
-    return await this.$services.auth.login({
-      email: 'test3@test3.com',
-      password: 'test2!@#QQQQ'
-    });
+  async login ({ dispatch }, credentials) {
+    await this.$services.auth.login(credentials);
+
+    dispatch('getCurrentUser');
+  },
+  async logout ({ commit }, sendRequest = true) {
+    if (sendRequest) {
+      await this.$services.auth.logout();
+    }
+
+    commit('SET_USER', null);
+    commit('SET_AUTHENTICATED', { authenticated: false });
+  },
+  async getCurrentUser ({ commit, dispatch }) {
+    try {
+      const user = await this.$services.auth.getCurrentUser();
+      commit('SET_USER', user);
+      commit('SET_AUTHENTICATED', { authenticated: true });
+    } catch {
+      dispatch('logout');
+    }
   }
 };

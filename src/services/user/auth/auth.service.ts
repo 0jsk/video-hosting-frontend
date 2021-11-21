@@ -7,4 +7,12 @@ export default class AuthService extends BaseApiService {
   async login (credentials: UserCredentials) {
     return await this.post<User>('log-in', credentials);
   }
+
+  async logout () {
+    return await this.post('log-out');
+  }
+
+  async getCurrentUser () {
+    return await this.get<User>('current');
+  }
 }
